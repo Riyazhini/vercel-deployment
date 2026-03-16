@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-theme-bg text-gray-800 antialiased;
+  }
+}
+
+/* ===== Scrollbar Styles ===== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #D1D5DB;
+}
+
+/* ===== Print Styles for Invoice ===== */
+@media print {
+  /* Hide everything except the invoice */
+  body > * { visibility: hidden; }
+  
+  /* Show only the invoice modal content */
+  .invoice-print-area,
+  .invoice-print-area * {
+    visibility: visible;
+  }
+  
+  .invoice-print-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+  }
+  
+  /* Hide print action buttons */
+  .print-hidden {
+    display: none !important;
+  }
+  
+  /* Ensure modal overlay doesn't block print */
+  .modal-overlay {
+    background: transparent !important;
+  }
+}
